@@ -2,6 +2,7 @@
 	<head>
 		<title>Randomizer</title>
 		<script src=cardjson.js></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<script src=randomizer.js></script>
@@ -9,6 +10,9 @@
 		Max sets: <input type=number id=maxsets value=10 />
 		<div><pre id=cardlist>Cards will go here.</pre></div>
 		<div><pre id=horizlist>Horizontal will go here.</pre></div>
-
+		<input type=button value="RNG 1-N" onclick=rng(); />
+		<input type=number id=rng_max value=10 />
+		<br />
+		<span id=rng>X</span> 
 	</body>
 </html>

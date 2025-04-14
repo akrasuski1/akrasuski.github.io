@@ -27,6 +27,22 @@ function fmt(arr) {
 	return res;
 }
 
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function rng() {
+	maxrng = parseInt(document.getElementById('rng_max').value);
+	r = getRandomInt(1, maxrng)
+	document.getElementById("rng").innerHTML = r;
+}
+
 function randomize() {
 	maxsets = parseInt(document.getElementById('maxsets').value);
 	allsets = ["Dominion", "Intryga", "Przysta\u0144", "Z\u0142oty wiek",
@@ -62,16 +78,12 @@ function randomize() {
 	}
 	chosen_cards.sort();
 
-	possible_cards = []
-	for (horiz of landscapes) {
-		for (elem of cardjson[horiz]) {
-			possible_cards.push([horiz, elem])
-		}
+	chosen_horiz = [];
+	for (i = 0; i < 2; i++) {
+		shuffle(landscapes);
+		shuffle(cardjson[landscapes[0]]);
+		chosen_horiz.push([landscapes[0], cardjson[landscapes[0]][0]]);
 	}
-
-
-	shuffle(possible_cards);
-	chosen_horiz = possible_cards.slice(0, 2);
 
 	zloty = 0
 	for (elem of chosen_cards) {
